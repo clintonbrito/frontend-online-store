@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default class Home extends Component {
   state = {
@@ -17,6 +18,7 @@ export default class Home extends Component {
           </p>
         ) : productList}
         <input type="text" name="search" id="" value={ searchInput } />
+        <Link data-testid="shopping-cart-button" to="/cart">Carrinho de compras</Link>
       </div>
     );
   }
