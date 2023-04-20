@@ -51,11 +51,11 @@ export default class Categories extends Component {
           }
         </aside>
         <div>
-          { categoriesFiltered.map((category) => (
-            <div key={ category.id } data-testid="product">
-              <h3>{category.title}</h3>
-              <img src={ category.thumbnail } alt={ category.title } />
-              <p>{category.price}</p>
+          { categoriesFiltered.map((product) => (
+            <div key={ product.id } data-testid="product">
+              <h3>{product.title}</h3>
+              <img src={ product.thumbnail } alt={ product.title } />
+              <p>{product.price}</p>
             </div>)) }
         </div>
       </>

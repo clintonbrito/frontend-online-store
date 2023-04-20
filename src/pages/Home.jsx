@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Categories from '../components/Categories';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import ProductsResult from '../components/ProductsResult';
 
 export default class Home extends Component {
   state = {
     showMessage: false,
     productList: [],
     searchInput: '',
+    // productId: '',
   };
 
   handleChange = ({ target: { value, name } }) => {
     this.setState({
       [name]: value,
+      // productId: id,
     });
   };
 
@@ -55,12 +58,14 @@ export default class Home extends Component {
         {productList.length === 0 ? (
           showMessage && <p>Nenhum produto foi encontrado</p>
         ) : (
-          productList.map((product) => (
-            <div key={ product.id } data-testid="product">
-              <h3>{product.title}</h3>
-              <img src={ product.thumbnail } alt={ product.title } />
-              <p>{product.price}</p>
-            </div>
+          productList.map(({ id, title, price, thumbnail }) => (
+            <ProductsResult
+              key={ id }
+              name={ title }
+              price={ price }
+              thumbnail={ thumbnail }
+              id={ id }
+            />
           ))
         )}
       </>
