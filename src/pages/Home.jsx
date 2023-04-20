@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Categories from '../components/Categories';
 
 export default class Home extends Component {
@@ -19,7 +20,8 @@ export default class Home extends Component {
             </p>
           ) : productList}
           <input type="text" name="search" id="" value={ searchInput } />
-        </div>
+          <Link data-testid="shopping-cart-button" to="/cart">Carrinho de compras</Link>
+      </div>
         <Categories />
       </>
     );
