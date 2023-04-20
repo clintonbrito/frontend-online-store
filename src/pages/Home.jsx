@@ -5,8 +5,9 @@ import { getProductsFromCategoryAndQuery } from '../services/api';
 
 export default class Home extends Component {
   state = {
+    showMessage: false,
     productList: [],
-    name: '',
+    searchInput: '',
   };
 
   handleChange = ({ target: { value, name } }) => {
@@ -16,16 +17,17 @@ export default class Home extends Component {
   };
 
   handleSearch = async () => {
-    const { name } = this.state;
-    const products = await getProductsFromCategoryAndQuery('', name);
+    const { searchInput } = this.state;
+    const products = await getProductsFromCategoryAndQuery('', searchInput);
 
     this.setState({
       productList: products.results,
+      showMessage: true,
     });
   };
 
   render() {
-    const { productList, name } = this.state;
+    const { productList, searchInput, showMessage } = this.state;
 
     return (
       <>
@@ -35,9 +37,9 @@ export default class Home extends Component {
           </p>
           <input
             type="text"
-            name="name"
+            name="searchInput"
             id=""
-            value={ name }
+            value={ searchInput }
             onChange={ this.handleChange }
             data-testid="query-input"
           />
@@ -51,9 +53,7 @@ export default class Home extends Component {
         </div>
         <Categories />
         {productList.length === 0 ? (
-          <p>
-            Nenhum produto foi encontrado
-          </p>
+          showMessage && <p>Nenhum produto foi encontrado</p>
         ) : (
           productList.map((product) => (
             <div key={ product.id } data-testid="product">
