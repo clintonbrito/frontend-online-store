@@ -4,7 +4,7 @@ import { getProductById } from '../services/api';
 
 export default class Product extends Component {
   state = {
-    productInfo: [],
+    productInfo: {},
     isLoading: true,
   };
 
@@ -25,15 +25,15 @@ export default class Product extends Component {
 
   render() {
     const { productInfo, isLoading } = this.state;
-    const { title, thumbnail, price } = productInfo;
+    // const { title, thumbnail, price } = productInfo;
     return (
       <div>
         { isLoading ? (<p>Carregando</p>) : (
           <div data-testid="product">
             <h1>Página do Produto</h1>
-            <h3>{ title }</h3>
-            <img src={ thumbnail } alt={ title } />
-            <p>{ price }</p>
+            <h3>{ productInfo.title }</h3>
+            <img src={ productInfo.thumbnail } alt={ productInfo.title } />
+            <p>{ productInfo.price }</p>
           </div>) }
       </div>
     );
