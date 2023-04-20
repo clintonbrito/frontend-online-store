@@ -21,7 +21,7 @@ export default class Home extends Component {
           ) : productList}
           <input type="text" name="search" id="" value={ searchInput } />
           <Link data-testid="shopping-cart-button" to="/cart">Carrinho de compras</Link>
-      </div>
+        </div>
         <Categories />
       </>
     );
