@@ -10,17 +10,17 @@ export default class Home extends Component {
     showMessage: false,
     productList: [],
     searchInput: '',
-    cartItems: [],
-    cartQtd: 0,
+    // cartItems: [],
+    // cartQtd: 0,
   };
 
   addProductToCart = ({ target: { id } }) => {
     console.log(id);
-    const { products } = this.props;
+    // const { products } = this.props;
 
-    this.setState({
-      cartItems: products,
-    }, () => localStorage.setItem('cartItems', JSON.stringify(products)));
+  //   this.setState({
+  //     cartItems: products,
+  //   }, () => localStorage.setItem('cartItems', JSON.stringify(products)));
   };
 
   handleChange = ({ target: { value, name } }) => {
