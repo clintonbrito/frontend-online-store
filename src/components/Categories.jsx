@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
+import ProductsResult from './ProductsResult';
 
 export default class Categories extends Component {
   state = {
@@ -51,12 +52,15 @@ export default class Categories extends Component {
           }
         </aside>
         <div>
-          { categoriesFiltered.map((category) => (
-            <div key={ category.id } data-testid="product">
-              <h3>{category.title}</h3>
-              <img src={ category.thumbnail } alt={ category.title } />
-              <p>{category.price}</p>
-            </div>)) }
+          { categoriesFiltered.map(({ id, title, price, thumbnail }) => (
+            <ProductsResult
+              key={ id }
+              name={ title }
+              price={ price }
+              thumbnail={ thumbnail }
+              id={ id }
+            />
+          ))}
         </div>
       </>
     );
