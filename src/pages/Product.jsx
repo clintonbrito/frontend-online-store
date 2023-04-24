@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { getProductById } from '../services/api';
 
 export default class Product extends Component {
@@ -14,13 +15,11 @@ export default class Product extends Component {
   }
 
   showProduct = async (id) => {
-    console.log(id);
     const product = await getProductById(id);
     this.setState({
       productInfo: product,
       isLoading: false,
     });
-    console.log(product);
   };
 
   render() {
@@ -29,11 +28,18 @@ export default class Product extends Component {
     return (
       <div>
         { isLoading ? (<p>Carregando</p>) : (
-          <div data-testid="product">
+          <div>
+            <Link to="/cart">
+              <button data-testid="shopping-cart-button">Carrinho</button>
+            </Link>
             <h1>Página do Produto</h1>
-            <h3>{ productInfo.title }</h3>
-            <img src={ productInfo.thumbnail } alt={ productInfo.title } />
-            <p>{ productInfo.price }</p>
+            <h3 data-testid="product-detail-name">{ productInfo.title }</h3>
+            <img
+              data-testid="product-detail-image"
+              src={ productInfo.thumbnail }
+              alt={ productInfo.title }
+            />
+            <p data-testid="product-detail-price">{ `XABLAU ${productInfo.price}` }</p>
           </div>) }
       </div>
     );
