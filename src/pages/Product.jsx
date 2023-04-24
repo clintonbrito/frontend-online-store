@@ -39,7 +39,7 @@ export default class Product extends Component {
               src={ productInfo.thumbnail }
               alt={ productInfo.title }
             />
-            <p data-testid="product-detail-price">{ `XABLAU ${productInfo.price}` }</p>
+            <p data-testid="product-detail-price">{ `R$ ${productInfo.price}` }</p>
           </div>) }
       </div>
     );
