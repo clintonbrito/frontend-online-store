@@ -3,8 +3,24 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default class ProductsResult extends Component {
+  addProductToCart = (id) => {
+    const { name, price, thumbnail } = this.props;
+    const product = { id, name, price, thumbnail };
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingProduct = cart.find((p) => p.id === id);
+
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      product.quantity = 1;
+      cart.push(product);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+  };
+
   render() {
-    const { name, price, thumbnail, id, addProductToCart } = this.props;
+    const { name, price, thumbnail, id } = this.props;
 
     return (
       <div data-testid="product">
@@ -18,8 +34,7 @@ export default class ProductsResult extends Component {
         </Link>
         <button
           data-testid="product-add-to-cart"
-          onClick={ addProductToCart }
-          id={ id }
+          onClick={ () => this.addProductToCart(id) }
         >
           Adicionar ao Carrinho
         </button>
