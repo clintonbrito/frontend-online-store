@@ -72,7 +72,7 @@ export default class Home extends Component {
           productList.map(({ id, title, price, thumbnail }) => (
             <ProductsResult
               key={ id }
-              name={ title }
+              title={ title }
               price={ price }
               thumbnail={ thumbnail }
               id={ id }
