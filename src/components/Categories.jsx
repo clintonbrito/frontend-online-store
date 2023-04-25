@@ -52,13 +52,14 @@ export default class Categories extends Component {
           }
         </aside>
         <div>
-          { categoriesFiltered.map(({ id, title, price, thumbnail }) => (
+          { categoriesFiltered.map((product) => (
             <ProductsResult
-              key={ id }
-              name={ title }
-              price={ price }
-              thumbnail={ thumbnail }
-              id={ id }
+              key={ product.id }
+              name={ product.title }
+              price={ product.price }
+              thumbnail={ product.thumbnail }
+              id={ product.id }
+              products={ product }
             />
           ))}
         </div>

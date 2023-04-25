@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default class ProductsResult extends Component {
   render() {
-    const { name, price, thumbnail, id } = this.props;
-    // const productsObj =
-    // const saveObj = (user) => localStorage.setItem(productsObj, JSON.stringify(user));
+    const { name, price, thumbnail, id, addProductToCart } = this.props;
 
     return (
-      <div
-        data-testid="product"
-        key={ id }
-      >
+      <div data-testid="product">
         <Link
           to={ `/product/${id}` }
           data-testid="product-detail-link"
@@ -21,7 +16,13 @@ export default class ProductsResult extends Component {
           <img src={ thumbnail } alt={ name } />
           <p>{ `R$ ${price}` }</p>
         </Link>
-        <button data-testid="product-add-to-cart">Adicionar ao Carrinho</button>
+        <button
+          data-testid="product-add-to-cart"
+          onClick={ addProductToCart }
+          id={ id }
+        >
+          Adicionar ao Carrinho
+        </button>
       </div>
     );
   }
