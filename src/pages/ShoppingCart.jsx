@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 
-class ShoppingCart extends Component {
-  state = {
-    cart: [],
-  };
-
+export default class ShoppingCart extends Component {
   render() {
-    const { cart } = this.state;
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
     return (
       <div>
         <h1>Meu carrinho</h1>
         {cart.length === 0
           ? (<p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>)
-          : cart }
-        {' '}
+          : cart.map((product) => (
+            <div key={ product.id }>
+              <p data-testid="shopping-cart-product-name">{product.name}</p>
+              <p>{`R$ ${product.price}`}</p>
+              <p data-testid="shopping-cart-product-quantity">{product.quantity}</p>
+            </div>
+          )) }
+        {}
       </div>
     );
   }
 }
-
-export default ShoppingCart;

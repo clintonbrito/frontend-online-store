@@ -14,14 +14,14 @@ export default class Home extends Component {
     // cartQtd: 0,
   };
 
-  addProductToCart = ({ target: { id } }) => {
-    console.log(id);
-    // const { products } = this.props;
+  // addProductToCart = ({ target: { id } }) => {
+  //   console.log(id);
+  //   const { products } = this.props;
 
   //   this.setState({
   //     cartItems: products,
   //   }, () => localStorage.setItem('cartItems', JSON.stringify(products)));
-  };
+  // };
 
   handleChange = ({ target: { value, name } }) => {
     this.setState({
@@ -76,7 +76,6 @@ export default class Home extends Component {
               price={ price }
               thumbnail={ thumbnail }
               id={ id }
-              addProductToCart={ this.addProductToCart }
             />
           ))
         )}
