@@ -19,8 +19,8 @@ export default class Categories extends Component {
     });
   };
 
-  handleClickCategories = async ({ target: { id } }) => {
-    const categories = await getProductsFromCategoryAndQuery(id);
+  handleClickCategories = async ({ target: { id, value } }) => {
+    const categories = await getProductsFromCategoryAndQuery(id, value);
     // const result = categories.filter((category) => category.id === id);
     // console.log(categories.results);
 
@@ -55,7 +55,7 @@ export default class Categories extends Component {
           { categoriesFiltered.map((product) => (
             <ProductsResult
               key={ product.id }
-              name={ product.title }
+              title={ product.title }
               price={ product.price }
               thumbnail={ product.thumbnail }
               id={ product.id }
